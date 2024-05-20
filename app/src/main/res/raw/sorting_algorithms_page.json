@@ -1,0 +1,27 @@
+{
+  "title": "Sorting Algorithms",
+  "theoreticalInformation": [
+    "Sorting algorithms are a fundamental concept in computer science, used to arrange elements in a particular order. The most common orders are numerical and lexicographical.",
+    "There are various sorting algorithms, each with its own advantages and disadvantages. Some of the most well-known sorting algorithms include Bubble Sort, Merge Sort, Quick Sort, and Insertion Sort."
+  ],
+  "mathFormulas": [
+    "Time Complexity of Bubble Sort:\n\nO(n^2)",
+    "Time Complexity of Merge Sort:\n\nO(n log n)"
+  ],
+  "codeSnippets": [
+    {
+      "title": "Bubble Sort",
+      "code": "fun bubbleSort(arr: IntArray) {\n    for (i in arr.indices) {\n        for (j in 0 until arr.size - i - 1) {\n            if (arr[j] > arr[j + 1]) {\n                val temp = arr[j]\n                arr[j] = arr[j + 1]\n                arr[j + 1] = temp\n            }\n        }\n    }\n}"
+    },
+    {
+      "title": "Merge Sort",
+      "code": "fun mergeSort(arr: IntArray) {\n    if (arr.size <= 1) return\n    val middle = arr.size / 2\n    val left = arr.sliceArray(0 until middle)\n    val right = arr.sliceArray(middle until arr.size)\n    mergeSort(left)\n    mergeSort(right)\n    merge(arr, left, right)\n}\n\nfun merge(arr: IntArray, left: IntArray, right: IntArray) {\n    var i = 0\n    var j = 0\n    var k = 0\n    while (i < left.size && j < right.size) {\n        if (left[i] <= right[j]) {\n            arr[k++] = left[i++]\n        } else {\n            arr[k++] = right[j++]\n        }\n    }\n    while (i < left.size) {\n        arr[k++] = left[i++]\n    }\n    while (j < right.size) {\n        arr[k++] = right[j++]\n    }\n}"
+    },
+    {
+      "title": "Quick Sort",
+      "code": "fun quickSort(arr: IntArray, low: Int, high: Int) {\n    if (low < high) {\n        val pi = partition(arr, low, high)\n        quickSort(arr, low, pi - 1)\n        quickSort(arr, pi + 1, high)\n    }\n}\n\nfun partition(arr: IntArray, low: Int, high: Int): Int {\n    val pivot = arr[high]\n    var i = low - 1\n    for (j in low until high) {\n        if (arr[j] < pivot) {\n            i++\n            val temp = arr[i]\n            arr[i] = arr[j]\n            arr[j] = temp\n        }\n    }\n    val temp = arr[i + 1]\n    arr[i + 1] = arr[high]\n    arr[high] = temp\n    return i + 1\n}"
+    }
+  ],
+  "visualizationLabel": "Visualize Sorting Algorithms",
+  "testLabel": "Sorting Algorithms Test"
+}

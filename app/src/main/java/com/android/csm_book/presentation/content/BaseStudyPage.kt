@@ -10,7 +10,6 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -22,9 +21,9 @@ import androidx.navigation.NavHostController
 fun BaseStudyPage(
     navController: NavHostController,
     title: String,
-    theoreticalInformation: String,
-    mathFormulas: String,
-    codeSnippets: List<String>,
+    theoreticalInformation: List<String>,
+    mathFormulas: List<String>,
+    codeSnippets: List<CodeSnippet>,
     visualizationLabel: String,
     testLabel: String,
     visualizationRoute: String,
@@ -60,11 +59,13 @@ fun BaseStudyPage(
                 modifier = Modifier.padding(bottom = 4.dp)
             )
 
-            Text(
-                text = theoreticalInformation,
-                style = MaterialTheme.typography.bodyLarge,
-                modifier = Modifier.padding(bottom = 8.dp)
-            )
+            theoreticalInformation.forEach { info ->
+                Text(
+                    text = info,
+                    style = MaterialTheme.typography.bodyLarge,
+                    modifier = Modifier.padding(bottom = 8.dp)
+                )
+            }
 
             Text(
                 text = "Mathematical Formulas",
@@ -72,11 +73,13 @@ fun BaseStudyPage(
                 modifier = Modifier.padding(bottom = 4.dp)
             )
 
-            Text(
-                text = mathFormulas,
-                style = MaterialTheme.typography.bodyLarge,
-                modifier = Modifier.padding(bottom = 8.dp)
-            )
+            mathFormulas.forEach { formula ->
+                Text(
+                    text = formula,
+                    style = MaterialTheme.typography.bodyLarge,
+                    modifier = Modifier.padding(bottom = 8.dp)
+                )
+            }
 
             Text(
                 text = "Code Snippets",
@@ -84,8 +87,13 @@ fun BaseStudyPage(
                 modifier = Modifier.padding(bottom = 4.dp)
             )
 
-            codeSnippets.forEach { code ->
-                CodeSnippet(code)
+            codeSnippets.forEach { snippet ->
+                Text(
+                    text = snippet.title,
+                    style = MaterialTheme.typography.headlineSmall,
+                    modifier = Modifier.padding(vertical = 4.dp)
+                )
+                CodeSnippet(snippet.code)
                 Spacer(modifier = Modifier.height(16.dp))
             }
 
@@ -117,7 +125,7 @@ fun CodeSnippet(code: String) {
     ) {
         Text(
             text = code,
-            style = TextStyle(
+            style = MaterialTheme.typography.bodyMedium.copy(
                 fontFamily = FontFamily.Monospace,
                 fontSize = 14.sp,
                 fontWeight = FontWeight.Normal,

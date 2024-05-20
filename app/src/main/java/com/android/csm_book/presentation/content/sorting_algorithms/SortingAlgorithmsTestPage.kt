@@ -1,4 +1,4 @@
-package com.android.csm_book.presentation.content.recursion
+package com.android.csm_book.presentation.content.sorting_algorithms
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -9,9 +9,9 @@ import com.android.csm_book.presentation.content.BaseTestPage
 import com.android.csm_book.presentation.content.loadTestPageContent
 
 @Composable
-fun RecursionTestPage(navController: NavHostController) {
+fun SortingAlgorithmsTestPage(navController: NavHostController) {
     val context = LocalContext.current
-    val testPageContent = remember { loadTestPageContent(context, R.raw.recursion_test) }
+    val testPageContent = remember { loadTestPageContent(context, R.raw.sorting_algorithms_test) }
 
     BaseTestPage(
         navController = navController,

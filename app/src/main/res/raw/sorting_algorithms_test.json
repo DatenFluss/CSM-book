@@ -1,0 +1,30 @@
+{
+  "title": "Sorting Algorithms Test",
+  "questions": [
+    {
+      "question": "What is the time complexity of Bubble Sort?",
+      "answers": ["O(n)", "O(n^2)", "O(n log n)", "O(log n)"],
+      "correctAnswer": "O(n^2)"
+    },
+    {
+      "question": "Which sorting algorithm is known as a divide-and-conquer algorithm?",
+      "answers": ["Insertion Sort", "Selection Sort", "Merge Sort", "Bubble Sort"],
+      "correctAnswer": "Merge Sort"
+    },
+    {
+      "question": "What is the worst-case time complexity of Quick Sort?",
+      "answers": ["O(n)", "O(n^2)", "O(n log n)", "O(log n)"],
+      "correctAnswer": "O(n^2)"
+    },
+    {
+      "question": "Which sorting algorithm is in-place and has a time complexity of O(n^2)?",
+      "answers": ["Merge Sort", "Quick Sort", "Insertion Sort", "Selection Sort"],
+      "correctAnswer": "Insertion Sort"
+    },
+    {
+      "question": "What is the primary advantage of using Merge Sort over Quick Sort?",
+      "answers": ["Lower time complexity", "In-place sorting", "Stability", "Simplicity"],
+      "correctAnswer": "Stability"
+    }
+  ]
+}

@@ -5,13 +5,14 @@ import com.google.gson.Gson
 import java.io.InputStreamReader
 
 fun loadStudyPageContent(context: Context, resId: Int): StudyPageContent {
-    val inputStream = context.resources.openRawResource(resId)
-    val reader = InputStreamReader(inputStream)
-    return Gson().fromJson(reader, StudyPageContent::class.java)
+    return Gson().fromJson(getInputStreamReader(context, resId), StudyPageContent::class.java)
 }
 
 fun loadTestPageContent(context: Context, resId: Int): TestPageContent {
+    return Gson().fromJson(getInputStreamReader(context, resId), TestPageContent::class.java)
+}
+
+fun getInputStreamReader(context: Context, resId: Int): InputStreamReader {
     val inputStream = context.resources.openRawResource(resId)
-    val reader = InputStreamReader(inputStream)
-    return Gson().fromJson(reader, TestPageContent::class.java)
+    return InputStreamReader(inputStream)
 }

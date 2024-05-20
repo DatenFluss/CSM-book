@@ -19,6 +19,9 @@ import androidx.navigation.compose.rememberNavController
 import com.android.csm_book.presentation.content.recursion.RecursionPage
 import com.android.csm_book.presentation.content.recursion.RecursionTestPage
 import com.android.csm_book.presentation.content.recursion.TowersOfHanoiVisualizationPage
+import com.android.csm_book.presentation.content.sorting_algorithms.SortingAlgorithmsPage
+import com.android.csm_book.presentation.content.sorting_algorithms.SortingAlgorithmsTestPage
+import com.android.csm_book.presentation.content.sorting_algorithms.SortingAlgorithmsVisualizationPage
 
 @Composable
 fun ExploreScreen(
@@ -40,11 +43,13 @@ fun ExploreNavController() {
         composable("sortingAlgorithms") { TowersOfHanoiVisualizationPage(navController) }
         composable("graphAlgorithms") { RecursionPage(navController) }
         composable("recursion") { RecursionPage(navController) }
+        composable("sortingAlgorithms") { SortingAlgorithmsPage(navController) }
 
         composable("towersOfHanoiVisualization") { TowersOfHanoiVisualizationPage(navController) }
+        composable("sortingAlgorithmsVisualization") { SortingAlgorithmsVisualizationPage(navController) }
 
         composable("recursionTest") { RecursionTestPage(navController) }
-        // Add more study pages here
+        composable("sortingAlgorithmsTest") { SortingAlgorithmsTestPage(navController) }
     }
 }
 

@@ -1,11 +1,27 @@
 {
   "title": "Recursion",
-  "theoreticalInformation": "Recursion is a method of solving problems where the solution depends on solutions to smaller instances of the same problem. A recursive function calls itself as a subroutine, allowing the function to be repeated several times, as it can call itself during its execution.",
-  "mathFormulas": "For example, the factorial of a number n (denoted as n!) is defined recursively as:\n\nn! = n × (n-1)!, where 0! = 1",
-  "codeSnippets": [
-    "fun factorial(n: Int): Int {\n    return if (n <= 1) {\n        1\n    } else {\n        n * factorial(n - 1)\n    }\n}",
-    "fun fibonacci(n: Int): Int {\n    return if (n <= 1) {\n        n\n    } else {\n        fibonacci(n - 1) + fibonacci(n - 2)\n    }\n}"
+  "theoreticalInformation": [
+    "Recursion is a method of solving problems where the solution depends on solutions to smaller instances of the same problem. A recursive function calls itself as a subroutine, allowing the function to be repeated several times, as it can call itself during its execution.",
+    "A recursive function has two main parts: the base case and the recursive case. The base case stops the recursion, and the recursive case continues the recursion by calling the function itself."
   ],
-  "visualizationLabel": "Visualize Recursion",
+  "mathFormulas": [
+    "Factorial:\n\nn! = n × (n-1)!, where 0! = 1",
+    "Fibonacci:\n\nF(n) = F(n-1) + F(n-2), where F(0) = 0 and F(1) = 1"
+  ],
+  "codeSnippets": [
+    {
+      "title": "Factorial",
+      "code": "fun factorial(n: Int): Int {\n    return if (n <= 1) {\n        1\n    } else {\n        n * factorial(n - 1)\n    }\n}"
+    },
+    {
+      "title": "Fibonacci",
+      "code": "fun fibonacci(n: Int): Int {\n    return if (n <= 1) {\n        n\n    } else {\n        fibonacci(n - 1) + fibonacci(n - 2)\n    }\n}"
+    },
+    {
+      "title": "Binary Search",
+      "code": "fun binarySearch(arr: IntArray, target: Int, low: Int, high: Int): Int {\n    if (low > high) return -1\n    val mid = (low + high) / 2\n    return when {\n        arr[mid] == target -> mid\n        arr[mid] > target -> binarySearch(arr, target, low, mid - 1)\n        else -> binarySearch(arr, target, mid + 1, high)\n    }\n}"
+    }
+  ],
+  "visualizationLabel": "Visualize Towers of Hanoi",
   "testLabel": "Recursion Test"
 }
