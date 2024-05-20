@@ -19,6 +19,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.android.csm_book.presentation.content.ExploreScreen
 
 import com.google.android.gms.auth.api.identity.Identity
 import kotlinx.coroutines.launch
@@ -113,8 +114,18 @@ class MainActivity : ComponentActivity() {
 
                                         navController.popBackStack()
                                     }
+                                },
+                                onExplore = {
+                                    lifecycleScope.launch {
+                                        navController.navigate("explore")
+                                    }
                                 }
+
                             )
+                        }
+
+                        composable("explore") {
+                            ExploreScreen()
                         }
                     }
                 }

@@ -19,7 +19,8 @@ import com.android.csm_book.presentation.sign_in.UserData
 @Composable
 fun ProfileScreen(
     userData: UserData?,
-    onSignOut: () -> Unit
+    onSignOut: () -> Unit,
+    onExplore: () -> Unit
 ) {
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -48,6 +49,18 @@ fun ProfileScreen(
         }
         Button(onClick = onSignOut) {
             Text(text = "Sign out")
+        }
+        Button(onClick = onExplore) {
+            Text(text = "Explore")
+        }
+        Button(onClick = onSignOut) {
+            Text(text = "Selected topics")
+        }
+        Button(onClick = onSignOut) {
+            Text(text = "Achievements")
+        }
+        Button(onClick = onSignOut) {
+            Text(text = "Practice")
         }
     }
 }

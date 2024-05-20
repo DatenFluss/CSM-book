@@ -1,0 +1,30 @@
+{
+  "title": "Recursion Test",
+  "questions": [
+    {
+      "question": "What is the base case in a recursive function?",
+      "answers": ["The initial call to the function", "The condition under which the recursion stops", "The recursive call to the function", "None of the above"],
+      "correctAnswer": "The condition under which the recursion stops"
+    },
+    {
+      "question": "Which of the following is an example of a recursive function?",
+      "answers": ["factorial(n)", "sum(a, b)", "multiply(a, b)", "divide(a, b)"],
+      "correctAnswer": "factorial(n)"
+    },
+    {
+      "question": "In the context of recursion, what is meant by the term 'stack overflow'?",
+      "answers": ["When the stack data structure is used up", "When too many recursive calls are made", "When a function takes too much memory", "None of the above"],
+      "correctAnswer": "When too many recursive calls are made"
+    },
+    {
+      "question": "What is a recursive data structure?",
+      "answers": ["A data structure that contains itself", "A data structure that calls itself", "A data structure used for recursion", "None of the above"],
+      "correctAnswer": "A data structure that contains itself"
+    },
+    {
+      "question": "How can infinite recursion be prevented?",
+      "answers": ["By using a loop", "By defining a base case", "By using a stack", "None of the above"],
+      "correctAnswer": "By defining a base case"
+    }
+  ]
+}

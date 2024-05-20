@@ -1,0 +1,11 @@
+{
+  "title": "Recursion",
+  "theoreticalInformation": "Recursion is a method of solving problems where the solution depends on solutions to smaller instances of the same problem. A recursive function calls itself as a subroutine, allowing the function to be repeated several times, as it can call itself during its execution.",
+  "mathFormulas": "For example, the factorial of a number n (denoted as n!) is defined recursively as:\n\nn! = n × (n-1)!, where 0! = 1",
+  "codeSnippets": [
+    "fun factorial(n: Int): Int {\n    return if (n <= 1) {\n        1\n    } else {\n        n * factorial(n - 1)\n    }\n}",
+    "fun fibonacci(n: Int): Int {\n    return if (n <= 1) {\n        n\n    } else {\n        fibonacci(n - 1) + fibonacci(n - 2)\n    }\n}"
+  ],
+  "visualizationLabel": "Visualize Recursion",
+  "testLabel": "Recursion Test"
+}
