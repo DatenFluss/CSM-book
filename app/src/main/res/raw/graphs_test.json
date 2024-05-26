@@ -1,0 +1,30 @@
+{
+  "title": "Graphs Test",
+  "questions": [
+    {
+      "question": "What is a graph?",
+      "answers": ["A collection of nodes and edges", "A collection of elements in a linear order", "A tree with at most two children", "A structure with only one root"],
+      "correctAnswer": "A collection of nodes and edges"
+    },
+    {
+      "question": "What distinguishes a directed graph from an undirected graph?",
+      "answers": ["Edges have directions", "Nodes have labels", "All nodes are connected", "Nodes have at most two children"],
+      "correctAnswer": "Edges have directions"
+    },
+    {
+      "question": "Which algorithm is used for finding the shortest path in a weighted graph?",
+      "answers": ["Depth-First Search", "Breadth-First Search", "Dijkstra's Algorithm", "Prim's Algorithm"],
+      "correctAnswer": "Dijkstra's Algorithm"
+    },
+    {
+      "question": "What is the degree of a node in an undirected graph?",
+      "answers": ["The number of edges incident to the node", "The number of children the node has", "The number of nodes in the graph", "The distance from the root"],
+      "correctAnswer": "The number of edges incident to the node"
+    },
+    {
+      "question": "Which traversal method visits all the vertices of a graph starting from a given vertex?",
+      "answers": ["Depth-First Search", "Breadth-First Search", "Prim's Algorithm", "Kruskal's Algorithm"],
+      "correctAnswer": ["Depth-First Search", "Breadth-First Search"]
+    }
+  ]
+}

@@ -16,6 +16,9 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.android.csm_book.presentation.content.graphs.GraphTraversalsVisualizationPage
+import com.android.csm_book.presentation.content.graphs.GraphsPage
+import com.android.csm_book.presentation.content.graphs.GraphsTestPage
 import com.android.csm_book.presentation.content.recursion.RecursionPage
 import com.android.csm_book.presentation.content.recursion.RecursionTestPage
 import com.android.csm_book.presentation.content.recursion.TowersOfHanoiVisualizationPage
@@ -49,16 +52,19 @@ fun ExploreNavController() {
         composable("recursion") { RecursionPage(navController) }
         composable("sortingAlgorithms") { SortingAlgorithmsPage(navController) }
         composable("trees") { TreesPage(navController) }
+        composable("graphs") { GraphsPage(navController) }
 
         // visualization pages
         composable("towersOfHanoiVisualization") { TowersOfHanoiVisualizationPage(navController) }
         composable("sortingAlgorithmsVisualization") { SortingAlgorithmsVisualizationPage(navController) }
         composable("treesVisualization") { TreeTraversalsVisualizationPage(navController) }
+        composable("graphsVisualization") { GraphTraversalsVisualizationPage(navController) }
 
         // test pages
         composable("recursionTest") { RecursionTestPage(navController) }
         composable("sortingAlgorithmsTest") { SortingAlgorithmsTestPage(navController) }
         composable("treesTest") { TreesTestPage(navController) }
+        composable("graphsTest") { GraphsTestPage(navController) }
     }
 }
 
@@ -66,7 +72,7 @@ fun ExploreNavController() {
 fun TopicListScreen(navController: NavHostController) {
     val topics = listOf(
         "Sorting Algorithms" to "sortingAlgorithms",
-        "Graph Algorithms" to "graphAlgorithms",
+        "Graphs" to "graphs",
         "Recursion" to "recursion",
         "Dynamic Programming" to "dynamicProgramming",
         "Trees" to "trees",

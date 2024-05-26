@@ -1,0 +1,29 @@
+{
+  "title": "Graphs",
+  "theoreticalInformation": [
+    "A graph is a data structure that consists of a set of nodes (or vertices) and a set of edges that connect pairs of nodes. Graphs are used to model relationships between objects.",
+    "Graphs can be directed or undirected. In a directed graph, edges have a direction, while in an undirected graph, edges do not have a direction.",
+    "Graphs can also be weighted, where each edge has an associated weight, or unweighted, where all edges have the same weight.",
+    "Common graph algorithms include depth-first search (DFS), breadth-first search (BFS), Dijkstra's algorithm for shortest paths, and Kruskal's and Prim's algorithms for minimum spanning trees."
+  ],
+  "mathFormulas": [
+    "Degree of a Node:\n\nFor a node v in an undirected graph, the degree of v is the number of edges incident to v.",
+    "Adjacency Matrix:\n\nA square matrix used to represent a graph, where the element at row i and column j indicates the presence of an edge between nodes i and j."
+  ],
+  "codeSnippets": [
+    {
+      "title": "Graph Representation using Adjacency List",
+      "code": "class Graph {\n    private val adjacencyList: MutableMap<Int, MutableList<Int>> = mutableMapOf()\n\n    fun addEdge(source: Int, destination: Int) {\n        adjacencyList.computeIfAbsent(source) { mutableListOf() }.add(destination)\n        adjacencyList.computeIfAbsent(destination) { mutableListOf() }.add(source)\n    }\n\n    fun getNeighbors(vertex: Int): List<Int> {\n        return adjacencyList[vertex] ?: emptyList()\n    }\n}"
+    },
+    {
+      "title": "Depth-First Search (DFS)",
+      "code": "fun dfs(graph: Graph, start: Int, visited: MutableSet<Int> = mutableSetOf()) {\n    if (start !in visited) {\n        visited.add(start)\n        println(start)\n        for (neighbor in graph.getNeighbors(start)) {\n            dfs(graph, neighbor, visited)\n        }\n    }\n}"
+    },
+    {
+      "title": "Breadth-First Search (BFS)",
+      "code": "fun bfs(graph: Graph, start: Int) {\n    val visited = mutableSetOf<Int>()\n    val queue = ArrayDeque<Int>()\n    visited.add(start)\n    queue.add(start)\n\n    while (queue.isNotEmpty()) {\n        val vertex = queue.removeFirst()\n        println(vertex)\n        for (neighbor in graph.getNeighbors(vertex)) {\n            if (neighbor !in visited) {\n                visited.add(neighbor)\n                queue.add(neighbor)\n            }\n        }\n    }\n}"
+    }
+  ],
+  "visualizationLabel": "Visualize Graph Algorithms",
+  "testLabel": "Graph Algorithms Test"
+}
