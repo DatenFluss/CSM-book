@@ -1,0 +1,28 @@
+{
+  "title": "Trees",
+  "theoreticalInformation": [
+    "A tree is a data structure composed of nodes, each node containing a value and references to other nodes (its children). Trees are used to represent hierarchical relationships and are an essential concept in computer science.",
+    "The topmost node in a tree is called the root, and nodes with no children are called leaves. Nodes with the same parent are called siblings.",
+    "There are various types of trees, including binary trees, binary search trees, AVL trees, and red-black trees."
+  ],
+  "mathFormulas": [
+    "Height of a Binary Tree:\n\nh = max(height(leftSubtree), height(rightSubtree)) + 1",
+    "Number of Nodes in a Binary Tree:\n\nn = 2^h - 1, where h is the height of the tree"
+  ],
+  "codeSnippets": [
+    {
+      "title": "Binary Tree Node",
+      "code": "class TreeNode(val value: Int) {\n    var left: TreeNode? = null\n    var right: TreeNode? = null\n}"
+    },
+    {
+      "title": "Inorder Traversal",
+      "code": "fun inorderTraversal(root: TreeNode?) {\n    if (root != null) {\n        inorderTraversal(root.left)\n        println(root.value)\n        inorderTraversal(root.right)\n    }\n}"
+    },
+    {
+      "title": "Insert into Binary Search Tree",
+      "code": "fun insertIntoBST(root: TreeNode?, value: Int): TreeNode {\n    if (root == null) {\n        return TreeNode(value)\n    }\n    if (value < root.value) {\n        root.left = insertIntoBST(root.left, value)\n    } else {\n        root.right = insertIntoBST(root.right, value)\n    }\n    return root\n}"
+    }
+  ],
+  "visualizationLabel": "Visualize Tree Structures",
+  "testLabel": "Tree Structures Test"
+}

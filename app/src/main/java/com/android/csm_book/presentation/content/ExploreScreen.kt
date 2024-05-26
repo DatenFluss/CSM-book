@@ -22,6 +22,9 @@ import com.android.csm_book.presentation.content.recursion.TowersOfHanoiVisualiz
 import com.android.csm_book.presentation.content.sorting_algorithms.SortingAlgorithmsPage
 import com.android.csm_book.presentation.content.sorting_algorithms.SortingAlgorithmsTestPage
 import com.android.csm_book.presentation.content.sorting_algorithms.SortingAlgorithmsVisualizationPage
+import com.android.csm_book.presentation.content.trees.TreeTraversalsVisualizationPage
+import com.android.csm_book.presentation.content.trees.TreesPage
+import com.android.csm_book.presentation.content.trees.TreesTestPage
 
 @Composable
 fun ExploreScreen(
@@ -40,16 +43,22 @@ fun ExploreNavController() {
     val navController = rememberNavController()
     NavHost(navController, startDestination = "topicList") {
         composable("topicList") { TopicListScreen(navController) }
-        composable("sortingAlgorithms") { TowersOfHanoiVisualizationPage(navController) }
+
+        // theoretical material pages
         composable("graphAlgorithms") { RecursionPage(navController) }
         composable("recursion") { RecursionPage(navController) }
         composable("sortingAlgorithms") { SortingAlgorithmsPage(navController) }
+        composable("trees") { TreesPage(navController) }
 
+        // visualization pages
         composable("towersOfHanoiVisualization") { TowersOfHanoiVisualizationPage(navController) }
         composable("sortingAlgorithmsVisualization") { SortingAlgorithmsVisualizationPage(navController) }
+        composable("treesVisualization") { TreeTraversalsVisualizationPage(navController) }
 
+        // test pages
         composable("recursionTest") { RecursionTestPage(navController) }
         composable("sortingAlgorithmsTest") { SortingAlgorithmsTestPage(navController) }
+        composable("treesTest") { TreesTestPage(navController) }
     }
 }
 
@@ -60,6 +69,7 @@ fun TopicListScreen(navController: NavHostController) {
         "Graph Algorithms" to "graphAlgorithms",
         "Recursion" to "recursion",
         "Dynamic Programming" to "dynamicProgramming",
+        "Trees" to "trees",
         // Add more topics here
     )
 

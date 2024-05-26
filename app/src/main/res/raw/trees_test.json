@@ -1,0 +1,30 @@
+{
+  "title": "Trees Test",
+  "questions": [
+    {
+      "question": "What is the root of a tree?",
+      "answers": ["The node with no parent", "The node with no children", "A node with two children", "A node with only one child"],
+      "correctAnswer": "The node with no parent"
+    },
+    {
+      "question": "What is an AVL tree?",
+      "answers": ["A tree with all leaf nodes at the same level", "A binary tree with a balance factor of -1, 0, or 1 for every node", "A tree with nodes having at most two children", "A tree with a single root"],
+      "correctAnswer": "A binary tree with a balance factor of -1, 0, or 1 for every node"
+    },
+    {
+      "question": "Which traversal method visits the left subtree, the root, and then the right subtree?",
+      "answers": ["Preorder", "Inorder", "Postorder", "Level Order"],
+      "correctAnswer": "Inorder"
+    },
+    {
+      "question": "What is the height of a tree?",
+      "answers": ["The number of nodes in the longest path from the root to a leaf", "The number of edges in the longest path from the root to a leaf", "The number of nodes in the tree", "The number of leaves in the tree"],
+      "correctAnswer": "The number of edges in the longest path from the root to a leaf"
+    },
+    {
+      "question": "In a binary search tree, where is the right child of a node located?",
+      "answers": ["To the right and has a smaller value", "To the right and has a greater value", "To the left and has a smaller value", "To the left and has a greater value"],
+      "correctAnswer": "To the right and has a greater value"
+    }
+  ]
+}
