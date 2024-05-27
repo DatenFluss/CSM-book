@@ -1,0 +1,29 @@
+{
+  "title": "Elementary Data Structures",
+  "theoreticalInformation": [
+    "Stacks: A stack is a linear data structure that follows the Last In First Out (LIFO) principle. Elements are added to the top of the stack and removed from the top. Common operations include push (adding an element), pop (removing an element), and peek (getting the top element without removing it).",
+    "Queues: A queue is a linear data structure that follows the First In First Out (FIFO) principle. Elements are added to the back of the queue and removed from the front. Common operations include enqueue (adding an element) and dequeue (removing an element).",
+    "Linked Lists: A linked list is a linear data structure where elements are stored in nodes, and each node points to the next node. There are various types of linked lists, including singly linked lists, doubly linked lists, and circular linked lists."
+  ],
+  "mathFormulas": [
+    "For a stack of height h, the top element can be accessed in O(1) time.",
+    "For a queue of length l, the front element can be accessed in O(1) time.",
+    "For a linked list of length n, inserting or deleting an element at the beginning can be done in O(1) time."
+  ],
+  "codeSnippets": [
+    {
+      "title": "Stack Implementation",
+      "code": "class Stack<T> {\n    private val elements: MutableList<T> = mutableListOf()\n\n    fun push(item: T) = elements.add(item)\n\n    fun pop(): T? = if (elements.isNotEmpty()) elements.removeAt(elements.size - 1) else null\n\n    fun peek(): T? = elements.lastOrNull()\n\n    fun isEmpty() = elements.isEmpty()\n\n    fun size() = elements.size\n}"
+    },
+    {
+      "title": "Queue Implementation",
+      "code": "class Queue<T> {\n    private val elements: MutableList<T> = mutableListOf()\n\n    fun enqueue(item: T) = elements.add(item)\n\n    fun dequeue(): T? = if (elements.isNotEmpty()) elements.removeAt(0) else null\n\n    fun peek(): T? = elements.firstOrNull()\n\n    fun isEmpty() = elements.isEmpty()\n\n    fun size() = elements.size\n}"
+    },
+    {
+      "title": "Singly Linked List Implementation",
+      "code": "class Node<T>(var data: T, var next: Node<T>? = null)\n\nclass LinkedList<T> {\n    private var head: Node<T>? = null\n\n    fun insert(data: T) {\n        val newNode = Node(data)\n        newNode.next = head\n        head = newNode\n    }\n\n    fun delete(): T? {\n        val data = head?.data\n        head = head?.next\n        return data\n    }\n\n    fun display() {\n        var current = head\n        while (current != null) {\n            print(\"${current.data} \")\n            current = current.next\n        }\n        println()\n    }\n}"
+    }
+  ],
+  "visualizationLabel": "Visualize Elementary Data Structures",
+  "testLabel": "Elementary Data Structures Test"
+}

@@ -1,6 +1,7 @@
 package com.android.csm_book.presentation.content
 
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -74,11 +75,7 @@ fun BaseStudyPage(
             )
 
             mathFormulas.forEach { formula ->
-                Text(
-                    text = formula,
-                    style = MaterialTheme.typography.bodyLarge,
-                    modifier = Modifier.padding(bottom = 8.dp)
-                )
+                LatexView(formula, modifier = Modifier.padding(bottom = 8.dp))
             }
 
             Text(
@@ -88,13 +85,16 @@ fun BaseStudyPage(
             )
 
             codeSnippets.forEach { snippet ->
-                Text(
-                    text = snippet.title,
-                    style = MaterialTheme.typography.headlineSmall,
-                    modifier = Modifier.padding(vertical = 4.dp)
-                )
-                CodeSnippet(snippet.code)
-                Spacer(modifier = Modifier.height(16.dp))
+                Column(modifier = Modifier.padding(bottom = 16.dp)) {
+                    Text(text = snippet.title, style = MaterialTheme.typography.bodyLarge, color = MaterialTheme.colorScheme.primary)
+                    Row(modifier = Modifier.horizontalScroll(rememberScrollState())) {
+                        Text(
+                            text = snippet.code,
+                            style = MaterialTheme.typography.bodyMedium.copy(fontFamily = FontFamily.Monospace),
+                            modifier = Modifier.padding(8.dp)
+                        )
+                    }
+                }
             }
 
             Spacer(modifier = Modifier.height(16.dp))

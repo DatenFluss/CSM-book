@@ -16,6 +16,10 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.android.csm_book.presentation.content.elementary_data_structures.ElementaryDataStructuresPage
+import com.android.csm_book.presentation.content.elementary_data_structures.ElementaryDataStructuresVisualizationPage
+import com.android.csm_book.presentation.content.elementary_data_structures.QueueVisualizationPage
+import com.android.csm_book.presentation.content.elementary_data_structures.StackVisualizationPage
 import com.android.csm_book.presentation.content.graphs.GraphTraversalsVisualizationPage
 import com.android.csm_book.presentation.content.graphs.GraphsPage
 import com.android.csm_book.presentation.content.graphs.GraphsTestPage
@@ -53,12 +57,16 @@ fun ExploreNavController() {
         composable("sortingAlgorithms") { SortingAlgorithmsPage(navController) }
         composable("trees") { TreesPage(navController) }
         composable("graphs") { GraphsPage(navController) }
+        composable("elementaryDataStructures") { ElementaryDataStructuresPage(navController) }
 
         // visualization pages
         composable("towersOfHanoiVisualization") { TowersOfHanoiVisualizationPage(navController) }
         composable("sortingAlgorithmsVisualization") { SortingAlgorithmsVisualizationPage(navController) }
         composable("treesVisualization") { TreeTraversalsVisualizationPage(navController) }
         composable("graphsVisualization") { GraphTraversalsVisualizationPage(navController) }
+        composable("elementaryDataStructuresVisualization") { ElementaryDataStructuresVisualizationPage(navController) }
+        composable("stackVisualization") { StackVisualizationPage(navController) }
+        composable("queueVisualization") { QueueVisualizationPage(navController) }
 
         // test pages
         composable("recursionTest") { RecursionTestPage(navController) }
@@ -72,11 +80,11 @@ fun ExploreNavController() {
 fun TopicListScreen(navController: NavHostController) {
     val topics = listOf(
         "Sorting Algorithms" to "sortingAlgorithms",
-        "Graphs" to "graphs",
+        "Elementary Data Structures" to "elementaryDataStructures",
         "Recursion" to "recursion",
+        "Graphs" to "graphs",
         "Dynamic Programming" to "dynamicProgramming",
         "Trees" to "trees",
-        // Add more topics here
     )
 
     Column(modifier = Modifier.padding(16.dp)) {
