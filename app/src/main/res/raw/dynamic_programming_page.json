@@ -1,0 +1,29 @@
+{
+  "title": "Dynamic Programming",
+  "theoreticalInformation": [
+    "Dynamic Programming (DP) is a method for solving complex problems by breaking them down into simpler subproblems. It is applicable to problems exhibiting the properties of overlapping subproblems and optimal substructure.",
+    "Overlapping Subproblems: This property is present if a recursive algorithm revisits the same subproblems multiple times.",
+    "Optimal Substructure: This property is present if an optimal solution to the problem contains optimal solutions to the subproblems.",
+    "DP solutions involve storing the results of subproblems to avoid redundant computations, which improves efficiency."
+  ],
+  "mathFormulas": [
+    "Fibonacci Sequence:\nF(n) = F(n-1) + F(n-2) with base cases F(0) = 0, F(1) = 1",
+    "Knapsack Problem:\nmax_value(i, w) = max(max_value(i-1, w), max_value(i-1, w-weight[i]) + value[i])"
+  ],
+  "codeSnippets": [
+    {
+      "title": "Fibonacci Sequence - Top-Down Approach",
+      "code": "fun fibonacci(n: Int, memo: IntArray): Int {\n    if (n <= 1) return n\n    if (memo[n] != -1) return memo[n]\n    memo[n] = fibonacci(n - 1, memo) + fibonacci(n - 2, memo)\n    return memo[n]\n}\n\nfun main() {\n    val n = 10\n    val memo = IntArray(n + 1) { -1 }\n    println(fibonacci(n, memo)) // Output: 55\n}"
+    },
+    {
+      "title": "Fibonacci Sequence - Bottom-Up Approach",
+      "code": "fun fibonacci(n: Int): Int {\n    if (n <= 1) return n\n    val dp = IntArray(n + 1)\n    dp[0] = 0\n    dp[1] = 1\n    for (i in 2..n) {\n        dp[i] = dp[i - 1] + dp[i - 2]\n    }\n    return dp[n]\n}\n\nfun main() {\n    val n = 10\n    println(fibonacci(n)) // Output: 55\n}"
+    },
+    {
+      "title": "0/1 Knapsack Problem",
+      "code": "fun knapsack(values: IntArray, weights: IntArray, capacity: Int): Int {\n    val n = values.size\n    val dp = Array(n + 1) { IntArray(capacity + 1) }\n    for (i in 1..n) {\n        for (w in 0..capacity) {\n            dp[i][w] = if (weights[i - 1] <= w) {\n                maxOf(dp[i - 1][w], dp[i - 1][w - weights[i - 1]] + values[i - 1])\n            } else {\n                dp[i - 1][w]\n            }\n        }\n    }\n    return dp[n][capacity]\n}\n\nfun main() {\n    val values = intArrayOf(60, 100, 120)\n    val weights = intArrayOf(10, 20, 30)\n    val capacity = 50\n    println(knapsack(values, weights, capacity)) // Output: 220\n}"
+    }
+  ],
+  "visualizationLabel": "Visualize Dynamic Programming",
+  "testLabel": "Dynamic Programming Test"
+}

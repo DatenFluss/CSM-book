@@ -1,0 +1,28 @@
+{
+  "title": "Hashing and Hash Functions",
+  "theoreticalInformation": [
+    "Hashing is a technique used to uniquely identify a specific object from a group of similar objects. It involves using a hash function to convert a given key into another value, which is typically an index used to store and retrieve data efficiently.",
+    "A hash function is a function that takes an input (or 'key') and returns a fixed-size string of bytes. The output, typically a 'hash code', is usually a 'digest' that is unique to each unique input.",
+    "Hash tables use hash functions to map keys to indices in an array. This allows for fast data retrieval because, ideally, each key maps to a unique index. However, collisions can occur when two keys hash to the same index. Various strategies, such as chaining and open addressing, are used to handle collisions."
+  ],
+  "mathFormulas": [
+    "Simple Hash Function: h(k) = k % m\nwhere h is the hash function, k is the key, and m is the size of the hash table.",
+    "Hash Function with Multiplication: h(k) = floor(m * (k * A % 1))\nwhere A is a constant (0 < A < 1), and floor() is the floor function."
+  ],
+  "codeSnippets": [
+    {
+      "title": "Simple Hash Function",
+      "code": "fun hashFunction(key: Int, tableSize: Int): Int {\n    return key % tableSize\n}"
+    },
+    {
+      "title": "Hash Function with Multiplication",
+      "code": "fun hashFunction(key: Int, tableSize: Int): Int {\n    val A = 0.6180339887 // constant value (0 < A < 1)\n    return floor(tableSize * (key * A % 1)).toInt()\n}"
+    },
+    {
+      "title": "Chaining to Handle Collisions",
+      "code": "class HashTable(val size: Int) {\n    private val table: Array<MutableList<Int>> = Array(size) { mutableListOf() }\n\n    fun insert(key: Int) {\n        val index = hashFunction(key, size)\n        table[index].add(key)\n    }\n\n    fun search(key: Int): Boolean {\n        val index = hashFunction(key, size)\n        return table[index].contains(key)\n    }\n\n    private fun hashFunction(key: Int, tableSize: Int): Int {\n        return key % tableSize\n    }\n}"
+    }
+  ],
+  "visualizationLabel": "Visualize Hash Functions",
+  "testLabel": "Hashing Test"
+}

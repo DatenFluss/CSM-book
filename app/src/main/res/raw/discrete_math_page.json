@@ -1,0 +1,33 @@
+{
+  "title": "Basics of Discrete Math",
+  "theoreticalInformation": [
+    "Discrete mathematics is the study of mathematical structures that are fundamentally discrete rather than continuous. It deals with countable, distinct elements and includes topics such as logic, set theory, combinatorics, graph theory, and algorithms."
+  ],
+  "mathFormulas": [
+    "P \\land Q = P \\land Q",
+    "P \\lor Q = P \\lor Q",
+    "\\neg P = \\neg P"
+  ],
+  "codeSnippets": [
+    {
+      "title": "Logical Operations",
+      "code": "fun logicalAnd(p: Boolean, q: Boolean): Boolean {\n    return p && q\n}\n\nfun logicalOr(p: Boolean, q: Boolean): Boolean {\n    return p || q\n}\n\nfun logicalNot(p: Boolean): Boolean {\n    return !p\n}"
+    },
+    {
+      "title": "Set Operations",
+      "code": "fun union(setA: Set<Int>, setB: Set<Int>): Set<Int> {\n    return setA.union(setB)\n}\n\nfun intersection(setA: Set<Int>, setB: Set<Int>): Set<Int> {\n    return setA.intersect(setB)\n}\n\nfun difference(setA: Set<Int>, setB: Set<Int>): Set<Int> {\n    return setA.subtract(setB)\n}"
+    },
+    {
+      "title": "Combinatorics",
+      "code": "fun factorial(n: Int): Int {\n    return if (n <= 1) 1 else n * factorial(n - 1)\n}\n\nfun combinations(n: Int, k: Int): Int {\n    return factorial(n) / (factorial(k) * factorial(n - k))\n}\n\nfun permutations(n: Int, k: Int): Int {\n    return factorial(n) / factorial(n - k)\n}"
+    },
+    {
+      "title": "Graph Operations",
+      "code": "data class Graph(val adjacencyList: MutableMap<Int, MutableList<Int>>)\n\nfun addEdge(graph: Graph, u: Int, v: Int) {\n    graph.adjacencyList.computeIfAbsent(u) { mutableListOf() }.add(v)\n    graph.adjacencyList.computeIfAbsent(v) { mutableListOf() }.add(u)\n}"
+    }
+  ],
+  "visualizationLabel": "Visualize Discrete Math Concepts",
+  "testLabel": "Test Your Knowledge",
+  "visualizationRoute": "discreteMathVisualization",
+  "testRoute": "discreteMathTest"
+}

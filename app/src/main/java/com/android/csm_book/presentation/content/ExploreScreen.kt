@@ -16,6 +16,9 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.android.csm_book.presentation.content.discrete_math.DiscreteMathStudyPage
+import com.android.csm_book.presentation.content.dynamic_programming.DynamicProgrammingPage
+import com.android.csm_book.presentation.content.dynamic_programming.FibonacciVisualizationPage
 import com.android.csm_book.presentation.content.elementary_data_structures.ElementaryDataStructuresPage
 import com.android.csm_book.presentation.content.elementary_data_structures.ElementaryDataStructuresVisualizationPage
 import com.android.csm_book.presentation.content.elementary_data_structures.QueueVisualizationPage
@@ -23,6 +26,8 @@ import com.android.csm_book.presentation.content.elementary_data_structures.Stac
 import com.android.csm_book.presentation.content.graphs.GraphTraversalsVisualizationPage
 import com.android.csm_book.presentation.content.graphs.GraphsPage
 import com.android.csm_book.presentation.content.graphs.GraphsTestPage
+import com.android.csm_book.presentation.content.hashing.HashingPage
+import com.android.csm_book.presentation.content.hashing.HashingVisualizationPage
 import com.android.csm_book.presentation.content.recursion.RecursionPage
 import com.android.csm_book.presentation.content.recursion.RecursionTestPage
 import com.android.csm_book.presentation.content.recursion.TowersOfHanoiVisualizationPage
@@ -58,6 +63,9 @@ fun ExploreNavController() {
         composable("trees") { TreesPage(navController) }
         composable("graphs") { GraphsPage(navController) }
         composable("elementaryDataStructures") { ElementaryDataStructuresPage(navController) }
+        composable("dynamicProgramming") { DynamicProgrammingPage(navController) }
+        composable("hashing") { HashingPage(navController) }
+        composable("discreteMath") { DiscreteMathStudyPage(navController) }
 
         // visualization pages
         composable("towersOfHanoiVisualization") { TowersOfHanoiVisualizationPage(navController) }
@@ -81,10 +89,13 @@ fun TopicListScreen(navController: NavHostController) {
     val topics = listOf(
         "Sorting Algorithms" to "sortingAlgorithms",
         "Elementary Data Structures" to "elementaryDataStructures",
+        "Matrices" to "matrices",
+        "Basics of discrete math" to "discreteMath",
         "Recursion" to "recursion",
+        "Trees" to "trees",
         "Graphs" to "graphs",
         "Dynamic Programming" to "dynamicProgramming",
-        "Trees" to "trees",
+        "Hashing" to "hashing",
     )
 
     Column(modifier = Modifier.padding(16.dp)) {

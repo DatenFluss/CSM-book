@@ -1,34 +1,11 @@
 package com.android.csm_book.presentation.content.trees
 
 import androidx.compose.foundation.Canvas
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.material3.Button
-import androidx.compose.material3.DropdownMenu
-import androidx.compose.material3.DropdownMenuItem
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
-import androidx.compose.material3.TopAppBar
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.runtime.setValue
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
@@ -70,7 +47,9 @@ fun TreeTraversalsVisualizationPage(navController: NavHostController) {
 fun TreeTraversalsVisualization() {
     var selectedTraversal by remember { mutableStateOf("Inorder") }
     val traversals = listOf("Inorder", "Preorder", "Postorder", "Level Order")
-    val tree = remember { generateSampleTree() }
+    val heights = listOf(3, 4, 5)
+    var selectedHeight by remember { mutableIntStateOf(3) }
+    var tree by remember { mutableStateOf(generateSampleTree(selectedHeight)) }
     val coroutineScope = rememberCoroutineScope()
     var isTraversing by remember { mutableStateOf(false) }
     var traversalResult by remember { mutableStateOf<List<Int>>(emptyList()) }
@@ -84,6 +63,15 @@ fun TreeTraversalsVisualization() {
 
         DropdownMenu(selectedTraversal, traversals) { traversal ->
             selectedTraversal = traversal
+        }
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        Text("Select Tree Height", style = MaterialTheme.typography.headlineMedium, modifier = Modifier.padding(16.dp))
+
+        DropdownMenu(selectedHeight.toString(), heights.map { it.toString() }) { height ->
+            selectedHeight = height.toInt()
+            tree = generateSampleTree(selectedHeight)
         }
 
         Spacer(modifier = Modifier.height(16.dp))
@@ -131,22 +119,22 @@ fun TreeTraversalsVisualization() {
 }
 
 @Composable
-fun DropdownMenu(selectedTraversal: String, traversals: List<String>, onSelectTraversal: (String) -> Unit) {
+fun DropdownMenu(selectedItem: String, items: List<String>, onSelectItem: (String) -> Unit) {
     var expanded by remember { mutableStateOf(false) }
 
     Box(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
         TextButton(onClick = { expanded = !expanded }) {
-            Text(selectedTraversal, style = MaterialTheme.typography.bodyLarge)
+            Text(selectedItem, style = MaterialTheme.typography.bodyLarge)
         }
         DropdownMenu(
             expanded = expanded,
             onDismissRequest = { expanded = false }
         ) {
-            traversals.forEach { traversal ->
+            items.forEach { item ->
                 DropdownMenuItem(
-                    text = { Text(traversal) },
+                    text = { Text(item) },
                     onClick = {
-                        onSelectTraversal(traversal)
+                        onSelectItem(item)
                         expanded = false
                     }
                 )
@@ -191,22 +179,24 @@ fun DrawScope.drawTree(node: TreeNode, highlightedNodes: List<Int>, x: Float = s
     }
 }
 
-data class TreeNode(val value: Int, val left: TreeNode? = null, val right: TreeNode? = null)
+data class TreeNode(val value: Int, var left: TreeNode? = null, var right: TreeNode? = null)
 
-fun generateSampleTree(): TreeNode {
-    return TreeNode(
-        value = 1,
-        left = TreeNode(
-            value = 2,
-            left = TreeNode(4),
-            right = TreeNode(5)
-        ),
-        right = TreeNode(
-            value = 3,
-            left = TreeNode(6),
-            right = TreeNode(7)
-        )
-    )
+fun generateSampleTree(height: Int): TreeNode {
+    if (height <= 0) return TreeNode(1)
+    val root = TreeNode(1)
+    var currentLevelNodes = mutableListOf(root)
+    var currentValue = 2
+    repeat(height - 1) {
+        val nextLevelNodes = mutableListOf<TreeNode>()
+        currentLevelNodes.forEach { node ->
+            node.left = TreeNode(currentValue++)
+            node.right = TreeNode(currentValue++)
+            nextLevelNodes.add(node.left!!)
+            nextLevelNodes.add(node.right!!)
+        }
+        currentLevelNodes = nextLevelNodes
+    }
+    return root
 }
 
 suspend fun inorderTraversal(node: TreeNode?, onTraversalUpdate: (List<Int>) -> Unit) {

@@ -56,11 +56,5 @@ fun ProfileScreen(
         Button(onClick = onSignOut) {
             Text(text = "Selected topics")
         }
-        Button(onClick = onSignOut) {
-            Text(text = "Achievements")
-        }
-        Button(onClick = onSignOut) {
-            Text(text = "Practice")
-        }
     }
 }
